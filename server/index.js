@@ -9,9 +9,6 @@ import postRoutes from './routes/posts.js';
 //app instance 형성
 const app = express();
 
-//라우터가 /posts인 경우 postRoutes가 처리한다.
-app.use('/posts', postRoutes);
-
 //PORT 설정
 const PORT = process.env.PORT | 5000;
 
@@ -19,6 +16,9 @@ const PORT = process.env.PORT | 5000;
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "30mb", extended: true }));
 app.use(cors());
+
+//라우터가 /posts인 경우 postRoutes가 처리한다.
+app.use('/posts', postRoutes);
 
 //mongodb를 연결할 때 어떤 db를 사용해주는지 명시해준다.
 //두번째 인자는 에러 방지용으로 해둠
