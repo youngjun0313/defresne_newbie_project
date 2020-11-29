@@ -1,14 +1,15 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import FileBase from 'react-file-base64';
 import { TextField, Button, Typography, Paper} from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 //font등 styles 불러오기
 import useStyles from './styles';
-import { createPost } from '../../actions/posts';
+import { createPost, updatePost } from '../../actions/posts';
 
 //component 생성
-const Form = () => {
+const Form = ({ currentId, setCurrentId }) => {
+    //data형식 지정
     const [postData, setPostData] = useState({
         creator: '',
         title: '',
@@ -19,12 +20,26 @@ const Form = () => {
 
     const classes = useStyles();
     const dispatch = useDispatch();
+    const post = useSelector((state) => (currentId ? state.posts.find((p) => p._id === currentId) : null));
+
+    //...클릭시 정보가 다시 form에 담긴다.
+    useEffect(() => {
+        //post가 null이 아닌경우
+        if(post)
+            setPostData(post);
+    }, [post])
 
     //event handler라고 보면됨
     const handleSubmit = (e) => {
         //화면의 새로고침을 막는 것
         e.preventDefault();
-        dispatch(createPost(postData));
+
+        //currentId가 null이 아니면
+        if(currentId)
+            dispatch(updatePost(currentId, postData));
+        else
+            dispatch(createPost(postData));
+
         console.log("submit success");
     }
     
