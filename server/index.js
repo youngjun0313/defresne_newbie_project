@@ -27,7 +27,7 @@ const DBURL = "mongodb://localhost/Diary"
 mongoose.connect(DBURL, {useNewUrlParser: true, useUnifiedTopology: true})
     .then(() => {
         app.listen(PORT, () => {
-            console.log("server connected successfully")
+            console.log(`server connected successfully at ${PORT}`)
         })
     })
     .catch((err) => {

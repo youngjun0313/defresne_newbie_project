@@ -18,6 +18,7 @@ const postSchema = mongoose.Schema({
 });
 
 //model의 첫번째 인자를 단수로 지정하게 되면 자동으로 collection 이름은 s가 붙여진 collecion으로 인식한다.
+//collection은 자동으로 소문자로 바뀜
 const PostMessage = mongoose.model('PostMessage', postSchema);
 
 export default PostMessage;

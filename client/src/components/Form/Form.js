@@ -35,8 +35,8 @@ const Form = () => {
     return(
         <Paper className = {classes.paper}>
             <form autoComplete="off" noValidate className = {`${classes.root} ${classes.form}`} onSubmit = {handleSubmit}>
-                <Typography varient="h6">
-                    Creating a Memory
+                <Typography varient="h5">
+                    기억에 남는 순간을 기록하세요
                 </Typography>
                 <TextField name="creator" varient="outlined" label="Creator" fullWidth value = {postData.creator} onChange = {(e) => setPostData({ ...postData, creator: e.target.value })} />
                 <TextField name="title" varient="outlined" label="Title" fullWidth value = {postData.title} onChange = {(e) => setPostData({ ...postData, title: e.target.value })} />
