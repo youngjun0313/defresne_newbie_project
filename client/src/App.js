@@ -16,7 +16,7 @@ import Form from './components/Form/Form';
 import useStyles from './styles';
 
 //우유 사진 불러오기
-import memories from './images/milky.jpg';
+import memories from './images/diary.jpg';
 
 
 const App = () => {
@@ -34,7 +34,6 @@ const App = () => {
                 <Typography className={classes.heading} variant="h2" align="center">
                     Memories
                 </Typography>
-                <img className={classes.image} src={memories} alt = "memories" height = "60"/>
             </AppBar>
             <Grow in>
                 <Container>
