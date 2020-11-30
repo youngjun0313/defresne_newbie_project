@@ -10,7 +10,7 @@ import postRoutes from './routes/posts.js';
 const app = express();
 
 //PORT 설정
-const PORT = process.env.PORT | 8000;
+const PORT = process.env.PORT | 8080;
 
 //사진을 데이터로 전달받을 거기 때문에 아래와 같이 badyParser를 설정한다.
 app.use(bodyParser.json({ limit: "30mb", extended: true }));
