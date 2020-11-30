@@ -20,7 +20,7 @@ app.use(cors());
 //라우터가 /posts인 경우 postRoutes가 처리한다.
 app.use('/posts', postRoutes);
 
-const DBURL = "mongodb://localhost/Diary"
+const DBURL = "mongodb+srv://dufrense:dufrense0313@cluster0.mjw1v.mongodb.net/Diary?retryWrites=true&w=majority"
 
 //mongodb를 연결할 때 어떤 db를 사용해주는지 명시해준다.
 //두번째 인자는 에러 방지용으로 해둠

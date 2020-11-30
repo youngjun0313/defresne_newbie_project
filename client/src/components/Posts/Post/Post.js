@@ -4,6 +4,8 @@ import ThumbUpAltIcon from '@material-ui/icons/ThumbUpAlt';
 import DeleteIcon from '@material-ui/icons/Delete';
 import MoreHorizIcon from '@material-ui/icons/MoreHoriz';
 import moment from 'moment';
+import { useDispatch } from 'react-redux';
+import { deletePost } from '../../../actions/posts';
 
 //font등 styles 불러오기
 import useStyles from './styles';
@@ -11,11 +13,12 @@ import useStyles from './styles';
 //component 생성
 const Post = ({ post, setCurrentId }) => {
     const classes = useStyles();
+    const dispatch = useDispatch();
 
     return (
       //card를 나타낸다
         <Card className={classes.card}>
-          <CardMedia className={classes.media} image={post.selectedFile || 'https://user-images.githubusercontent.com/194400/49531010-48dad180-f8b1-11e8-8d89-1e61320e1d82.png'} title={post.title} />
+          <CardMedia className={classes.media} image={post.selectedFile} title={post.title} />
           
           <div className={classes.overlay}>
             <Typography variant="h6">{post.creator}</Typography>
@@ -35,7 +38,7 @@ const Post = ({ post, setCurrentId }) => {
           </CardContent>
           <CardActions className={classes.cardActions}>
             <Button size="small" color="primary" onClick={() => {}}><ThumbUpAltIcon fontSize="small" /> Like {post.likeCount} </Button>
-            <Button size="small" color="primary" onClick={() => {}}><DeleteIcon fontSize="small" /> Delete</Button>
+            <Button size="small" color="primary" onClick={() => dispatch(deletePost(post._id))}><DeleteIcon fontSize="small" /> Delete</Button>
           </CardActions>
         </Card>
       );
